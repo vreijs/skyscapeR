@@ -26,7 +26,7 @@ a string with continent followed by country capital (eg. "Europe/London").}
 \item{limb}{(Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
 If missing the centre of the sun will be used for calculations.}
 
-\item{alt}{(Optional) Apparent ltitude, necessary for automatic declination calculation.
+\item{alt}{(Optional) Apparent altitude, necessary for automatic declination calculation.
 If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 will be automatically read from the horizon profile.}
 

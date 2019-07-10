@@ -17,7 +17,7 @@ Only necessary if \emph{magdec} is not given.}
 
 \item{magdec}{(Optional) Magnetic declination, if known.}
 
-\item{alt}{(Optional) Apparent altitude, necessary for automatic declination calculation.
+\item{alt}{(Optional) Apparent altitude, necessary for automatic topocentric declination calculation.
 If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 will be automatically read from the horizon profile.}
 

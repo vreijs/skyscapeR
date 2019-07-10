@@ -17,12 +17,12 @@ an array of latitude values.}
 \item{alt}{Altitude of orientation. Optional, if left empty and a skyscapeR.object
 is provided then this is will automatically retrieved from the horizon data via \code{\link{hor2alt}}}
 
-\item{az}{Azimuth(s) for which to calculate declination(s). See examples below.}
+\item{az}{Azimuth(s) for which to calculate topocentric declination(s). See examples below.}
 
 \item{loc}{Location, can be either a \emph{skyscapeR.horizon} object or, alternatively,
 an array of latitude values.}
 
-\item{alt}{Altitude of orientation. Optional, if left empty and a skyscapeR.object
+\item{alt}{Apparent altitude of orientation. Optional, if left empty and a skyscapeR.object
 is provided then this is will automatically retrieved from the horizon data via \code{\link{hor2alt}}}
 }
 \description{
@@ -33,10 +33,10 @@ orientation , i.e. an azimuth. The altitude can either be given
 This function is a wrapper for function \code{\link[swephR]{swe_azalt_rev}}
 of package \emph{swephR}.
 
-This function calculates the declination corresponding to an
-orientation , i.e. an azimuth. The altitude can either be given
+This function calculates the topocntric declination corresponding to an
+orientation , i.e. an azimuth. The apparent altitude can either be given
  or, alternatively, if a \emph{skyscapeR.horizon} object is provided,
- the corresponding horizon altitude will be automatically retrieved.
+ the corresponding horizon apparent altitude will be automatically retrieved.
 This function is a wrapper for function \code{\link{swe_azalt_rev}}
 of package \emph{swephR}.
 }
