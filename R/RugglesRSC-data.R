@@ -6,7 +6,7 @@
 #' @usage data(RugglesRSC)
 #' @format A data frame with 37 rows and 2 variables:
 #'  \describe{
-#'    \item{Dec}{Declination}
+#'    \item{Dec}{Topocentric declination}
 #'    \item{ID}{Site ID}
 #'    }
 #' @keywords datasets
