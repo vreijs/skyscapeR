@@ -25,9 +25,11 @@ tWS <- function(days, year) {
 
 #' @noRd
 #' @export
+# dec: topocentric declination
 eq2hor <- function(ra, dec, loc, refraction=F, atm=1013.25, temp=15) {
-  xx <- swephR::swe_azalt(jd, 1, c(loc[2],loc[1],loc[3]), atm, temp, c(ra,dec))$xaz
-
+  xx <- swe_azalt(jd, 1, c(loc[2],loc[1],loc[3]), atm, temp, c(ra,dec))$xaz
+# refraction=T: alt is apparent altitude
+# refraction=F: alt is topocentric altitude
   if (refraction) { alt <- xx[3] } else { alt <- xx[2] }
   az <- xx[1]-180
   if (az < 0) { az <- az + 360 }
@@ -63,12 +65,12 @@ minmaxdec = function(name, from, to) {
   return(mm)
 }
 
-#' Retrieves horizon altitude for a given azimuth from a given horizon profile
+#' Retrieves horizon apparent altitude for a given azimuth from a given horizon profile
 #'
-#' This function retrieves the horizon altitude for a given azimuth from
+#' This function retrieves the horizon apparent altitude for a given azimuth from
 #' a previously created \emph{skyscapeR.horizon} object via spline interpolation.
-#' @param hor A \emph{skyscapeR.horizon} object from which to retrieve horizon altitude.
-#' @param az Array of azimuth(s) for which to retrieve horizon altitude(s).
+#' @param hor A \emph{skyscapeR.horizon} object from which to retrieve horizon apparent altitude.
+#' @param az Array of azimuth(s) for which to retrieve horizon apparent altitude(s).
 #' @export
 #' @import stats
 #' @seealso \code{\link{createHor}}, \code{\link{downloadHWT}}
@@ -204,7 +206,7 @@ az2dec = function(az, loc, alt){
   for (i in 1:NROW(az)) {
     # change apparent altitude into topocentric altitude
     topoalt<-swe_refrac(alt[i],1013.25,15,1)
-    dec[i] <- round( swephR::swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
+    dec[i] <- round(swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
   }
 
   return(dec)

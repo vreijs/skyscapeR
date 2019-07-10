@@ -2,9 +2,9 @@
 #' Create .\emph{skyscapeR.horizon} object from Az/Alt data
 #'
 #' This function creates a \emph{skyscapeR.horizon} object from measurements of
-#' azimuth and altitude.
+#' azimuth and apparent altitude.
 #' @param az Array of azimuth values
-#' @param alt Array of altitude values.
+#' @param alt Array of apparent altitude values.
 #' @param alt.unc (Optional) Either a single value or an array of altitude
 #' uncertainty.
 #' @param loc Location, a vector containing the latitude and longitude of
@@ -161,7 +161,7 @@ downloadHWT <- function(HWTID) {
 
   horizon <- read.csv(file.path(tempdir(), paste0(HWTID, '.csv')))
 
-  ## Altitude Error
+  ## Apparent altitude Error
   delta <- 9.73  # 9.73m for SRTM data
   horizon$error <- rep(NA,NROW(data))
   for (i in 1:NROW(horizon)) {
@@ -180,7 +180,11 @@ downloadHWT <- function(HWTID) {
   hor$metadata$georef <- c(Lat, Lon, Elev); names(hor$metadata$georef) <- c('Lat','Lon', 'Elev'); dim(hor$metadata$georef) <- c(1,3)
   hor$metadata$elevation <- Elev
 
-  hor$data <- data.frame(az = horizon$bin.bottom, alt = horizon$altitude, alt.unc = horizon$error)
+# bin.bottom of az needs to be increased with half binsize (0.125) to match the apparent alttiude value
+# (which is calculated for the whole bin)
+# az=0 and az=360 need to be added (to make sure interpolations works well), both with apparent altitude being average(hor$data$alt[1],hor$data$alt[2880])
+
+  hor$data <- data.frame(az = horizon$bin.bottom+0.125/2, alt = horizon$altitude, alt.unc = horizon$error)
 
   class(hor) <- "skyscapeR.horizon"
   return(hor)
