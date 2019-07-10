@@ -6,7 +6,7 @@
 for a given location and day}
 \usage{
 riseset(body = "sun", date, jd, calendar = "G", timezone = "", loc,
-  refraction = T, atm = 1013.25, temp = 15, verbose = T)
+  refraction = T, atm = 1013.25, temp = 15, verbose = T, alt = 0)
 }
 \arguments{
 \item{body}{(Optional) String containing name of the solar system body of interest. Can be

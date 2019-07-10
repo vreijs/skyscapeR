@@ -37,7 +37,7 @@ This function calculates the declination corresponding to an
 orientation , i.e. an azimuth. The altitude can either be given
  or, alternatively, if a \emph{skyscapeR.horizon} object is provided,
  the corresponding horizon altitude will be automatically retrieved.
-This function is a wrapper for function \code{\link[swephR]{swe_azalt_rev}}
+This function is a wrapper for function \code{\link{swe_azalt_rev}}
 of package \emph{swephR}.
 }
 \examples{
@@ -59,5 +59,5 @@ decs <- az2dec( c(87,92,110), hor )
 \seealso{
 \code{\link[swephR]{swe_azalt_rev}}, \code{\link{hor2alt}}
 
-\code{\link[swephR]{swe_azalt_rev}}, \code{\link{hor2alt}}
+\code{\link{swe_azalt_rev}}, \code{\link{hor2alt}}
 }

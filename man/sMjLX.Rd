@@ -2,23 +2,23 @@
 % Please edit documentation in R/events.R
 \name{sMjLX}
 \alias{sMjLX}
-\title{Declination of southern major Lunar Extreme for a given year}
+\title{Topodecentric declination of southern major Lunar Extreme for a given year}
 \usage{
-sMjLX(year = cur.year, parallax = 0.85)
+sMjLX(year = cur.year, parallax = 0.952)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
 Defaults to present year as given by \emph{Sys.Date()}.}
 
-\item{parallax}{Lunar parallax value. Defaults to 0.85.}
+\item{parallax}{Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.}
 }
 \description{
-This function calculates the declination of the southern
+This function calculates the Topodecentric declination of the southern
 major Lunar Extreme for a given year, by simple addition
 of obliquity with maximum lunar inclination.
 }
 \examples{
-# Southern major Lunar Extreme declination for year 2499 BC:
+# Southern major Lunar Extreme Topodecentric declination for year 2499 BC:
 sMjLX(-2500)
 }
 \seealso{

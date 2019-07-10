@@ -2,7 +2,7 @@
 % Please edit documentation in R/events.R
 \name{eq}
 \alias{eq}
-\title{Declination of sun at the equinoxes}
+\title{Topodecentric declination of sun at the equinoxes}
 \usage{
 eq(bh = NULL)
 }
@@ -11,7 +11,7 @@ eq(bh = NULL)
 }
 \description{
 This function always returns a value of zero, which is the
-declination of the sun on the day of the (astronomical)
+Topodecentric declination of the sun on the day of the (astronomical)
 equinoxes.
 }
 \examples{

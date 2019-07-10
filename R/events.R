@@ -138,117 +138,119 @@ sky.objects = function(names, epoch, col = 'red', lty = 1, lwd = 1) {
 }
 
 
-#' Declination of December Solstice for a given year
+#' Topodecentric declination of December Solstice for a given year
 #'
-#' This function calculates the declination of the sun
+#' This function calculates the Topodecentric declination of the sun
 #' at December Solstice for a given year, based upon
 #' obliquity estimation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
+#' @param parallax Solar parallax value. Defaults to 0.00224 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{obliquity}}, \code{\link{jS}}, \code{\link{eq}}, \code{\link{zenith}}, \code{\link{antizenith}}
 #' @examples
 #' # December Solstice declination for year 3999 BC:
 #' dS(-4000)
-dS = function(year = cur.year) {
-  aux <- obliquity(year)
+dS = function(year = cur.year, parallax = 0.00224) {
+  aux <- obliquity(year)-parallax
   return(-aux)
 }
 
 
-#' Declination of June Solstice for a given year
+#' Topodecentric declination of June Solstice for a given year
 #'
-#' This function calculates the declination of the sun
+#' This function calculates the Topodecentric declination of the sun
 #' at June Solstice for a given year, based upon
 #' obliquity estimation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
+#' @param parallax Solar parallax value. Defaults to 0.00224 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{obliquity}}, \code{\link{dS}}, \code{\link{eq}}, \code{\link{zenith}}, \code{\link{antizenith}}
 #' @examples
 #' # June Solstice declination for year 3999 BC:
 #' jS(-4000)
-jS = function(year = cur.year) {
-  aux <- obliquity(year)
+jS = function(year = cur.year, parallax = 0.00224) {
+  aux <- obliquity(year)-parallax
   return(aux)
 }
 
 
-#' Declination of northern minor Lunar Extreme for a given year
+#' Topodecentric declination of northern minor Lunar Extreme for a given year
 #'
-#' This function calculates the declination of the northern
+#' This function calculates the Topodecentric declination of the northern
 #' minor Lunar Extreme for a given year, by simple addition
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{smnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
-#' # Northern minor Lunar Extreme declination for year 2499 BC:
+#' # Northern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nmnLX(-2500)
 nmnLX = function(year = cur.year, parallax = 0.952) {
   return(obliquity(year) - (5.145+0.145) - parallax)
 }
 
 
-#' Declination of southern minor Lunar Extreme for a given year
+#' Topodecentric declination of southern minor Lunar Extreme for a given year
 #'
-#' This function calculates the declination of the southern
+#' This function calculates the Topodecentric declination of the southern
 #' minor Lunar Extreme for a given year, by simple addition
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
-#' # Southern minor Lunar Extreme declination for year 2499 BC:
+#' # Southern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' smnLX(-2500)
 smnLX = function(year = cur.year, parallax = .952) {
   return(-(obliquity(year) - (5.145+0.145)) - parallax)
 }
 
 
-#' Declination of northern major Lunar Extreme for a given year
+#' Topodecentric declination of northern major Lunar Extreme for a given year
 #'
-#' This function calculates the declination of the northern
+#' This function calculates the Topodecentric declination of the northern
 #' major Lunar Extreme for a given year, by simple addition
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.952 the averaga parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the averaga parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{smnLX}}, \code{\link{sMjLX}}
 #' @examples
-#' # Northern major Lunar Extreme declination for year 2499 BC:
+#' # Northern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nMjLX(-2500)
 nMjLX = function(year = cur.year, parallax = 0.952) {
   return(obliquity(year) + (5.145+0.145) - parallax)
 }
 
 
-#' Declination of southern major Lunar Extreme for a given year
+#' Topodecentric declination of southern major Lunar Extreme for a given year
 #'
-#' This function calculates the declination of the southern
+#' This function calculates the Topodecentric declination of the southern
 #' major Lunar Extreme for a given year, by simple addition
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{smnLX}}
 #' @examples
-#' # Southern major Lunar Extreme declination for year 2499 BC:
+#' # Southern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' sMjLX(-2500)
 sMjLX = function(year = cur.year, parallax = 0.952) {
   return(-(obliquity(year) + (5.145+0.145)) - parallax)
 }
 
-#' Declination of sun at the equinoxes
+#' Topodecentric declination of sun at the equinoxes
 #'
 #' This function always returns a value of zero, which is the
-#' declination of the sun on the day of the (astronomical)
+#' Topodecentric declination of the sun on the day of the (astronomical)
 #' equinoxes.
 #' @param bh \emph{NULL} parameter. Can be left empty.
 #' @export

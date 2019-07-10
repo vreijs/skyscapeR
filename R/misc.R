@@ -162,22 +162,22 @@ mag2size <- function(mag) {
 }
 
 
-#' Calculates declination from azimuth and altitude measurements
+#' Calculates topocentric declination from azimuth and apparent altitude measurements
 #'
-#' This function calculates the declination corresponding to an
-#' orientation , i.e. an azimuth. The altitude can either be given
+#' This function calculates the topocntric declination corresponding to an
+#' orientation , i.e. an azimuth. The apparent altitude can either be given
 #'  or, alternatively, if a \emph{skyscapeR.horizon} object is provided,
-#'  the corresponding horizon altitude will be automatically retrieved.
-#' This function is a wrapper for function \code{\link[swephR]{swe_azalt_rev}}
+#'  the corresponding horizon apparent altitude will be automatically retrieved.
+#' This function is a wrapper for function \code{\link{swe_azalt_rev}}
 #' of package \emph{swephR}.
-#' @param az Azimuth(s) for which to calculate declination(s). See examples below.
+#' @param az Azimuth(s) for which to calculate topocentric declination(s). See examples below.
 #' @param loc Location, can be either a \emph{skyscapeR.horizon} object or, alternatively,
 #' an array of latitude values.
-#' @param alt Altitude of orientation. Optional, if left empty and a skyscapeR.object
+#' @param alt Apparent altitude of orientation. Optional, if left empty and a skyscapeR.object
 #' is provided then this is will automatically retrieved from the horizon data via \code{\link{hor2alt}}
 #' @import swephR
 #' @export
-#' @seealso \code{\link[swephR]{swe_azalt_rev}}, \code{\link{hor2alt}}
+#' @seealso \code{\link{swe_azalt_rev}}, \code{\link{hor2alt}}
 #' @examples
 #' hor <- downloadHWT('HIFVTBGK')
 #'
@@ -202,7 +202,9 @@ az2dec = function(az, loc, alt){
 
   dec <- c()
   for (i in 1:NROW(az)) {
-    dec[i] <- round( swephR::swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, alt[i]))$xout[2], prec)
+    # change apparent altitude into topocentric altitude
+    topoalt<-swe_refrac_extended(alt[i],0,1013.25,0.0065,15,1)$dret[1]
+    dec[i] <- round( swephR::swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
   }
 
   return(dec)

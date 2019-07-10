@@ -13,8 +13,8 @@
 #' @param az.sun (Optional) Measured azimuth of the sun. Defaults to zero.
 #' @param limb (Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
 #' If missing the centre of the sun will be used for calculations.
-#' @param alt (Optional) Altitude, necessary for automatic declination calculation.
-#' If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the altitude
+#' @param alt (Optional) Apparent altitude, necessary for automatic declination calculation.
+#' If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 #' will be automatically read from the horizon profile.
 #' @param name (Optional) Names or labels to identify each measurement.
 #' @param ID (Optional) IDs or codes to identify each measurement.
@@ -34,10 +34,10 @@
 #'
 #' data <- reduct.theodolite(c(lat,lon), az, date , time, tz= "Europe/Malta", az.sun)
 #'
-#' # Declination will be automatically calculated if the altitude is also given:
+#' # Topocentric declination will be automatically calculated if the apparent altitude is also given:
 #' data <- reduct.theodolite(c(lat,lon), az, date , time, tz= "Europe/Malta", az.sun, alt=c(2,5))
 #'
-#' # Alternatively, the altitude can be automatically retrieved from a horizon profile:
+#' # Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 #' hor <- downloadHWT('UFXERSLQ')
 #' data <- reduct.theodolite(hor, az, date, time, tz= "Europe/Malta", az.sun)
 reduct.theodolite = function(loc, az, date, time, tz, az.sun = 0, limb, alt, name, ID, HWT.ID) {
@@ -72,16 +72,16 @@ reduct.theodolite = function(loc, az, date, time, tz, az.sun = 0, limb, alt, nam
   df$True.Azimuth=az.corr
 
   if (!missing(alt)) {
-    message('Altitude values found. Calculating declination...')
+    message('Apparent altitude values found. Calculating topocentric declination...')
     dec <- az2dec(az.corr, loc, alt)
     df$Altitude = alt
     df$Declination <- dec
   } else if (class(hor)=='skyscapeR.horizon') {
-    message('Horizon profile found. Obtaining altitude values and calculating declination...')
+    message('Horizon profile found. Obtaining apparent altitude values and calculating topocentric declination...')
     dec <- az2dec(az.corr, hor)
     df$Altitude <- hor2alt(hor, az.corr)
     df$Declination <- dec
-  } else { message('No altitude values or horizon profile found. Declination values were not calculated.') }
+  } else { message('No apparent altitude values or horizon profile found. Topocentric declination values were not calculated.') }
 
   df <- as.data.frame(df)
   return(df)
@@ -98,8 +98,8 @@ reduct.theodolite = function(loc, az, date, time, tz, az.sun = 0, limb, alt, nam
 #' @param date (Optional) Date of measurements as a string in the format: 'YYYY/MM/DD'.
 #' Only necessary if \emph{magdec} is not given.
 #' @param magdec (Optional) Magnetic declination, if known.
-#' @param alt (Optional) Altitude, necessary for automatic declination calculation.
-#' If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the altitude
+#' @param alt (Optional) Apparent altitude, necessary for automatic topocentric declination calculation.
+#' If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 #' will be automatically read from the horizon profile.
 #' @param name (Optional) Names or labels to identify each measurement.
 #' @param ID (Optional) IDs or codes to identify each measurement.
@@ -112,10 +112,10 @@ reduct.theodolite = function(loc, az, date, time, tz, az.sun = 0, limb, alt, nam
 #' mag.az <- c(89.5, 105, 109.5)
 #' data <- reduct.compass(loc, mag.az, "2016/04/02")
 #'
-#' # Declination will be automatically calculated if the altitude is also given:
+#' # Topocentic declination will be automatically calculated if the apparent altitude is also given:
 #' data <- reduct.compass(loc, mag.az, "2016/04/02", alt=c(1,2,0))
 #'
-#' # Alternatively, the altitude can be automatically retrieved from a horizon profile:
+#' # Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 #' hor <- downloadHWT('NML6GMSX')
 #' data <- reduct.compass(hor, mag.az, "2016/04/02")
 reduct.compass = function(loc, mag.az, date, magdec, alt, name, ID, HWT.ID) {
@@ -142,16 +142,16 @@ reduct.compass = function(loc, mag.az, date, magdec, alt, name, ID, HWT.ID) {
   df$True.Azimuth=true.az
   if (!missing(HWT.ID)) { df$HWT.ID <- HWT.ID }
   if (!missing(alt)) {
-    message('Altitude values found. Calculating declination...')
+    message('Apparent altitude values found. Calculating topocentric declination...')
     dec <- az2dec(true.az, loc, alt)
     df$Altitude = alt
     df$Declination <- dec
   } else if (class(hor)=='skyscapeR.horizon') {
-    message('Horizon profile found. Obtaining altitude values and calculating declination...')
+    message('Horizon profile found. Obtaining apparent altitude values and calculating topocentric declination...')
     dec <- az2dec(true.az, hor)
     df$Altitude <- hor2alt(hor, true.az)
     df$Declination <- dec
-  } else { message('No altitude values or horizon profile found. Declination values were not calculated.') }
+  } else { message('No apparent altitude values or horizon profile found. Topocentric declination values were not calculated.') }
 
   df <- as.data.frame(df)
   return(df)

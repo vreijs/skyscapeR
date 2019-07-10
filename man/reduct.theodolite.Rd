@@ -26,8 +26,8 @@ a string with continent followed by country capital (eg. "Europe/London").}
 \item{limb}{(Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
 If missing the centre of the sun will be used for calculations.}
 
-\item{alt}{(Optional) Altitude, necessary for automatic declination calculation.
-If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the altitude
+\item{alt}{(Optional) Apparent ltitude, necessary for automatic declination calculation.
+If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 will be automatically read from the horizon profile.}
 
 \item{name}{(Optional) Names or labels to identify each measurement.}
@@ -51,10 +51,10 @@ time <- "11:07:17"
 
 data <- reduct.theodolite(c(lat,lon), az, date , time, tz= "Europe/Malta", az.sun)
 
-# Declination will be automatically calculated if the altitude is also given:
+# Topocentric declination will be automatically calculated if the apparent altitude is also given:
 data <- reduct.theodolite(c(lat,lon), az, date , time, tz= "Europe/Malta", az.sun, alt=c(2,5))
 
-# Alternatively, the altitude can be automatically retrieved from a horizon profile:
+# Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 hor <- downloadHWT('UFXERSLQ')
 data <- reduct.theodolite(hor, az, date, time, tz= "Europe/Malta", az.sun)
 }

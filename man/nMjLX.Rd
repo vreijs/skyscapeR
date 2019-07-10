@@ -2,23 +2,23 @@
 % Please edit documentation in R/events.R
 \name{nMjLX}
 \alias{nMjLX}
-\title{Declination of northern major Lunar Extreme for a given year}
+\title{Topodecentric declination of northern major Lunar Extreme for a given year}
 \usage{
-nMjLX(year = cur.year, parallax = 0.85)
+nMjLX(year = cur.year, parallax = 0.952)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
 Defaults to present year as given by \emph{Sys.Date()}.}
 
-\item{parallax}{Lunar parallax value. Defaults to 0.85.}
+\item{parallax}{Lunar parallax value. Defaults to 0.952 the averaga parallax value. If set to 0: geocentric declination.}
 }
 \description{
-This function calculates the declination of the northern
+This function calculates the Topodecentric declination of the northern
 major Lunar Extreme for a given year, by simple addition
 of obliquity with maximum lunar inclination.
 }
 \examples{
-# Northern major Lunar Extreme declination for year 2499 BC:
+# Northern major Lunar Extreme Topodecentric declination for year 2499 BC:
 nMjLX(-2500)
 }
 \seealso{

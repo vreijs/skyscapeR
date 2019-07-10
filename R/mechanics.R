@@ -77,7 +77,7 @@ mag.dec = function(loc, date) {
 
 #' Computes obliquity of the ecliptic
 #'
-#' This function calculates the obliquity (incl. nutation) for a given epoch. It is a
+#' This function calculates the true obliquity (so incl. nutation) for a given epoch. It is a
 #' wrapper for function \code{\link[swephR]{swe_calc}} of package \emph{swephR}.
 #' @param year Year for which to calculate the obliquity.
 #' Defaults to present year as given by Sys.Date()

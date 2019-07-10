@@ -17,8 +17,8 @@ Only necessary if \emph{magdec} is not given.}
 
 \item{magdec}{(Optional) Magnetic declination, if known.}
 
-\item{alt}{(Optional) Altitude, necessary for automatic declination calculation.
-If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the altitude
+\item{alt}{(Optional) Apparent altitude, necessary for automatic declination calculation.
+If missing and \emph{loc} is a \emph{skyscapeR.horizon} object then the apparent altitude
 will be automatically read from the horizon profile.}
 
 \item{name}{(Optional) Names or labels to identify each measurement.}
@@ -37,10 +37,10 @@ loc <- c(35,-7)
 mag.az <- c(89.5, 105, 109.5)
 data <- reduct.compass(loc, mag.az, "2016/04/02")
 
-# Declination will be automatically calculated if the altitude is also given:
+# Topocentic declination will be automatically calculated if the apparent altitude is also given:
 data <- reduct.compass(loc, mag.az, "2016/04/02", alt=c(1,2,0))
 
-# Alternatively, the altitude can be automatically retrieved from a horizon profile:
+# Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 hor <- downloadHWT('NML6GMSX')
 data <- reduct.compass(hor, mag.az, "2016/04/02")
 }
