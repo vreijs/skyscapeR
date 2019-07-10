@@ -164,7 +164,7 @@ mag2size <- function(mag) {
 
 #' Calculates topocentric declination from azimuth and apparent altitude measurements
 #'
-#' This function calculates the topocntric declination corresponding to an
+#' This function calculates the topocentric declination corresponding to an
 #' orientation , i.e. an azimuth. The apparent altitude can either be given
 #'  or, alternatively, if a \emph{skyscapeR.horizon} object is provided,
 #'  the corresponding horizon apparent altitude will be automatically retrieved.
@@ -203,7 +203,7 @@ az2dec = function(az, loc, alt){
   dec <- c()
   for (i in 1:NROW(az)) {
     # change apparent altitude into topocentric altitude
-    topoalt<-swe_refrac_extended(alt[i],0,1013.25,0.0065,15,1)$dret[1]
+    topoalt<-swe_refrac(alt[i],1013.25,15,1)
     dec[i] <- round( swephR::swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
   }
 
