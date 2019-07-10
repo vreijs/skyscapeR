@@ -181,14 +181,14 @@ jS = function(year = cur.year) {
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.951 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
 #' @export
 #' @seealso \code{\link{smnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Northern minor Lunar Extreme declination for year 2499 BC:
 #' nmnLX(-2500)
-nmnLX = function(year = cur.year, parallax = 0.951) {
-  return(obliquity(year) - 5.145 - parallax)
+nmnLX = function(year = cur.year, parallax = 0.952) {
+  return(obliquity(year) - (5.145+0.145) - parallax)
 }
 
 
@@ -199,14 +199,14 @@ nmnLX = function(year = cur.year, parallax = 0.951) {
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.951 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Southern minor Lunar Extreme declination for year 2499 BC:
 #' smnLX(-2500)
-smnLX = function(year = cur.year, parallax = .85) {
-  return(-(obliquity(year) - 5.145) - parallax)
+smnLX = function(year = cur.year, parallax = .952) {
+  return(-(obliquity(year) - (5.145+0.145)) - parallax)
 }
 
 
@@ -217,14 +217,14 @@ smnLX = function(year = cur.year, parallax = .85) {
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.951 the averaga parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the averaga parallax value.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{smnLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Northern major Lunar Extreme declination for year 2499 BC:
 #' nMjLX(-2500)
-nMjLX = function(year = cur.year, parallax = 0.951) {
-  return(obliquity(year) + 5.145 - parallax)
+nMjLX = function(year = cur.year, parallax = 0.952) {
+  return(obliquity(year) + (5.145+0.145) - parallax)
 }
 
 
@@ -235,14 +235,14 @@ nMjLX = function(year = cur.year, parallax = 0.951) {
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.951 the average parallax value.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{smnLX}}
 #' @examples
 #' # Southern major Lunar Extreme declination for year 2499 BC:
 #' sMjLX(-2500)
-sMjLX = function(year = cur.year, parallax = 0.951) {
-  return(-(obliquity(year) + 5.145) - parallax)
+sMjLX = function(year = cur.year, parallax = 0.952) {
+  return(-(obliquity(year) + (5.145+0.145)) - parallax)
 }
 
 #' Declination of sun at the equinoxes
