@@ -1,9 +1,13 @@
 #' @noRd
 events <- function(name) {
   return(switch(name,
+                #VR: why not nS and sS as december and july are not always correct (only for modern Gregorian times...)
+                #VR make it the same as the moon: nSX en sSX
                 'December Solstice' = 'dS',
                 'June Solstice' = 'jS',
+                #VR perhaps keep this as eq or perhaps eS???
                 'Equinox' = 'eq',
+                #VR: what do the j and n before the L mean???
                 'Major Lunar Extreme (southern)' = 'sMjLX',
                 'Minor Lunar Extreme (southern)' = 'smnLX',
                 'Major Lunar Extreme (northern)' = 'nMjLX',
