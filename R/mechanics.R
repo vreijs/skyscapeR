@@ -50,7 +50,7 @@ obliquity = function(year = cur.year) {
 #' # Position of the sun at noon GMT on Christmas day 2018:
 #' body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
 #'
-#' # Declination of the moon at same time
+#' # Geocentric declination of the moon at same time
 #' body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
 body.position = function(body='sun', time, timezone='', calendar='G', dectype='geo', loc) {
   body <- checkbody(body)
@@ -59,12 +59,12 @@ body.position = function(body='sun', time, timezone='', calendar='G', dectype='g
   for (i in 1:length(time)) {
     if (class(time[i])=='character') { jd <- time2jd(time[i], timezone, calendar) } else { jd <- time[i] }
     if (dectype == 'geo') {
-      aux <- swephR::swe_calc(jd, body, 2048)
+      aux <- swephR::swe_calc_ut(jd, body, 2048)
     } else if (dectype == 'topo') {
       if (missing(loc)) { stop('No location given, but necessary to ouput topocentric coordinates.')}
       if (class(loc)=='skyscapeR.horizon') { loc <- loc$georef }
       swephR::swe_set_topo(loc[2],loc[1],loc[3])
-      aux <- swephR::swe_calc(jd, body, 2048+32*1024)
+      aux <- swephR::swe_calc_ut(jd, body, 2048+32*1024)
     }
     out[i,] <- aux$xx[1:2]
   }

@@ -35,7 +35,7 @@ This function calculates the geocentric or topocentric declination and right asc
 # Position of the sun at noon GMT on Christmas day 2018:
 body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
 
-# Declination of the moon at same time
+# Geocentric declination of the moon at same time
 body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
 }
 \seealso{
