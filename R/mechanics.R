@@ -293,7 +293,8 @@ orbit = function(dec, loc, res=0.25, refraction=T, ...) {
 #' @seealso \code{\link{reduct.theodolite}}
 #' @examples
 #' sunAz(c(52,-3,0), '2017-10-04 12:32:14', 'Europe/London')
-sunAz = function(loc, time, timezone = 'Europe/London', limb, alt=F) {
+# I would consider taking GMT as default... I find that more general...
+sunAz = function(loc, time, timezone = 'GMT', limb, alt=F) {
   if (class(loc)=='skyscapeR.horizon') { loc <- c(hor$metadata$georef, hor$metadata$elevation) }
   if (is.null(dim(loc))) { dim(loc) <- c(1, NROW(loc)) }
 
