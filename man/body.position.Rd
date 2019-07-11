@@ -5,7 +5,7 @@
 \title{Computes position of Solar System bodies in equatorial coordinates}
 \usage{
 body.position(body = "sun", time, timezone = "", calendar = "G",
-  dec = "geo", loc)
+  dectype = "geo", loc)
 }
 \arguments{
 \item{body}{(Optional) String containing name of the solar system body of interest. Can be
@@ -21,7 +21,7 @@ a string with continent followed by country capital (eg. "Europe/London"). See
 \item{calendar}{(Optional) Calendar used in parameter \emph{time}. G for gregorian and J for julian.
 Only needed if \emph{time} is a string. Defaults to Gregorian.}
 
-\item{dec}{(Optional) \emph{geo} for geocentric, or \emph{topo} for topocentric coordinates. Defaults
+\item{dectype}{(Optional) \emph{geo} for geocentric, or \emph{topo} for topocentric coordinates. Defaults
 to geocentric.}
 
 \item{loc}{(Optional) Location, only needed if output is in topocentric coordinates.}

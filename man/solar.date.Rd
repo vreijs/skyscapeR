@@ -7,14 +7,14 @@
 solar.date(dec, year, calendar = "G")
 }
 \arguments{
-\item{dec}{Single value or array of declinations.}
+\item{dec}{Single value or array of geocentric declinations.}
 
 \item{year}{Year for which to do calculations.}
 
 \item{calendar}{(Optional) Calendar used for output. G for gregorian and J for julian. Defaults to Gregorian.}
 }
 \description{
-Returns the calendar date when the sun has the same declination as the input declinations.
+Returns the calendar date when the sun has the same geocentric declination as the input geocentric declinations.
 }
 \examples{
 solar.date(-23, 2018)

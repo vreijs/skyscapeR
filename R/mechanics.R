@@ -40,7 +40,7 @@ obliquity = function(year = cur.year) {
 #' \link{timezones} for details. Only needed if \emph{time} is a string. Defaults to system timezone.
 #' @param calendar (Optional) Calendar used in parameter \emph{time}. G for gregorian and J for julian.
 #' Only needed if \emph{time} is a string. Defaults to Gregorian.
-#' @param dec (Optional) \emph{geo} for geocentric, or \emph{topo} for topocentric coordinates. Defaults
+#' @param dectype (Optional) \emph{geo} for geocentric, or \emph{topo} for topocentric coordinates. Defaults
 #' to geocentric.
 #' @param loc (Optional) Location, only needed if output is in topocentric coordinates.
 #' @import swephR
@@ -52,15 +52,15 @@ obliquity = function(year = cur.year) {
 #'
 #' # Declination of the moon at same time
 #' body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
-body.position = function(body='sun', time, timezone='', calendar='G', dec='geo', loc) {
+body.position = function(body='sun', time, timezone='', calendar='G', dectype='geo', loc) {
   body <- checkbody(body)
 
   out <- data.frame(RA=NA, Dec=NA)
   for (i in 1:length(time)) {
     if (class(time[i])=='character') { jd <- time2jd(time[i], timezone, calendar) } else { jd <- time[i] }
-    if (dec == 'geo') {
+    if (dectype == 'geo') {
       aux <- swephR::swe_calc(jd, body, 2048)
-    } else if (dec == 'topo') {
+    } else if (dectype == 'topo') {
       if (missing(loc)) { stop('No location given, but necessary to ouput topocentric coordinates.')}
       if (class(loc)=='skyscapeR.horizon') { loc <- loc$georef }
       swephR::swe_set_topo(loc[2],loc[1],loc[3])
@@ -327,10 +327,11 @@ sunAz = function(loc, time, timezone = 'GMT', limb, alt=F) {
 }
 
 
+
 #' Solar Date
 #'
-#' Returns the calendar date when the sun has the same declination as the input declinations.
-#' @param dec Single value or array of declinations.
+#' Returns the calendar date when the sun has the same geocentric declination as the input geocentric declinations.
+#' @param dec Single value or array of geocentric declinations.
 #' @param year Year for which to do calculations.
 #' @param calendar (Optional) Calendar used for output. G for gregorian and J for julian. Defaults to Gregorian.
 #' @import swephR
@@ -339,6 +340,8 @@ sunAz = function(loc, time, timezone = 'GMT', limb, alt=F) {
 #' solar.date(-23, 2018)
 #' solar.date(-23, 1200, calendar='G')
 #' solar.date(-23, 1200, calendar='J')
+# perhaps add argument 'dectype' (whcih can be transfered to body.position)
+# then one can calculate geo or topo declination. Although ther ei snot much difference bewteen geo and topo in case of sun...
 solar.date <- function(dec, year, calendar='G'){
 
   jd0 <- time2jd(timestring(year,1,1,12), timezone='UTC', calendar)
