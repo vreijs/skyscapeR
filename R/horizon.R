@@ -78,12 +78,14 @@ exportHor = function(hor, name, author="skyscapeR", description, ground_col, hor
                    paste0("description = ", description), "polygonal_horizon_list = horizon.txt",
                    "polygonal_angle_rotatez = 0", paste0("ground_color = ",ground_col),
                    paste0("horizon_line_color =  ",hor_col), "",
-                   "[location]", "planet = Earth", paste0("latitude = ",hor$Lat,"d"),
-                   paste0("longitude = ",hor$Lon,"d"), paste0("altitude = ",round(hor$Elev*0.3,0)))
+                   "[location]", "planet = Earth", paste0("latitude = ",hor$metadata$georef[1,1],"d"),
+                   paste0("longitude = ",hor$metadata$georef[1,2],"d"), paste0("altitude = ",round(hor$metadata$georef[1,3]*0.304,0)))
   writeLines(string.text, fileConn)
   close(fileConn)
 
   # Save as zip file
+
+  # no zip file is made in my case... or perhasp provide in function results the location ofthe zip file
   zip(zipfile=paste0(name,'-horizon.zip'), files=c("landscape.ini", "horizon.txt"))
   file.remove(c('landscape.ini', 'horizon.txt'))
 }
@@ -181,8 +183,9 @@ downloadHWT <- function(HWTID) {
   hor$metadata$elevation <- Elev
 
 # bin.bottom of az needs to be increased with half binsize (0.125) to match the apparent alttiude value
-# (which is calculated for the whole bin)
-# az=0 and az=360 need to be added (to make sure interpolations works well), both with apparent altitude being average(hor$data$alt[1],hor$data$alt[2880])
+# (which is determined for the whole bin)
+# I think that interpolations (hor2alt) works well for az=0 and 360, both with apparent altitude being average(hor$data$alt[1],hor$data$alt[2880])
+# was not yet able to test if exportHor can handle this.
 
   hor$data <- data.frame(az = horizon$bin.bottom+0.125/2, alt = horizon$altitude, alt.unc = horizon$error)
 
