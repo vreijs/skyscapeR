@@ -152,8 +152,8 @@ sky.objects = function(names, epoch, col = 'red', lty = 1, lwd = 1) {
 #' # December Solstice declination for year 3999 BC:
 #' dS(-4000)
 dS = function(year = cur.year, parallax = 0.00224) {
-  aux <- obliquity(year)-parallax
-  return(-aux)
+  aux <- -obliquity(year)-parallax
+  return(aux)
 }
 
 
