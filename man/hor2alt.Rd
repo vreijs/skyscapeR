@@ -2,17 +2,17 @@
 % Please edit documentation in R/misc.R
 \name{hor2alt}
 \alias{hor2alt}
-\title{Retrieves horizon altitude for a given azimuth from a given horizon profile}
+\title{Retrieves horizon apparent altitude for a given azimuth from a given horizon profile}
 \usage{
 hor2alt(hor, az)
 }
 \arguments{
-\item{hor}{A \emph{skyscapeR.horizon} object from which to retrieve horizon altitude.}
+\item{hor}{A \emph{skyscapeR.horizon} object from which to retrieve horizon apparent altitude.}
 
-\item{az}{Array of azimuth(s) for which to retrieve horizon altitude(s).}
+\item{az}{Array of azimuth(s) for which to retrieve horizon apparent altitude(s).}
 }
 \description{
-This function retrieves the horizon altitude for a given azimuth from
+This function retrieves the horizon apparent altitude for a given azimuth from
 a previously created \emph{skyscapeR.horizon} object via spline interpolation.
 }
 \examples{

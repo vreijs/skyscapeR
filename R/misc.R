@@ -205,7 +205,7 @@ az2dec = function(az, loc, alt){
   dec <- c()
   for (i in 1:NROW(az)) {
     # change apparent altitude into topocentric altitude
-    topoalt<-swe_refrac(alt[i],1013.25,15,1)
+    topoalt<-swe_refrac_extended(alt[i],0,1013.25,15,0.0065,1)$dret[1]
     dec[i] <- round(swe_azalt_rev(jd, 1, c(hor$metadata$georef[2],hor$metadata$georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
   }
 

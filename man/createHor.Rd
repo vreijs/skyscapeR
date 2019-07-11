@@ -9,7 +9,7 @@ createHor(az, alt, alt.unc, loc, name)
 \arguments{
 \item{az}{Array of azimuth values}
 
-\item{alt}{Array of altitude values.}
+\item{alt}{Array of apparent altitude values.}
 
 \item{alt.unc}{(Optional) Either a single value or an array of altitude
 uncertainty.}
@@ -21,7 +21,7 @@ the location, in this order.}
 }
 \description{
 This function creates a \emph{skyscapeR.horizon} object from measurements of
-azimuth and altitude.
+azimuth and apparent altitude.
 }
 \examples{
 # Create a skyscapeR.horizon from 5 measurements:
