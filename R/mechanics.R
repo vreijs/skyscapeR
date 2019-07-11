@@ -286,13 +286,13 @@ orbit = function(dec, loc, res=0.25, refraction=T, ...) {
 #' a string with continent followed by country capital (eg. "Europe/London").
 #' @param limb (Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
 #' If missing the centre of the sun will be output.
-#' @param alt (Optional) Boolean that triggers output of altitude of the sun at exact time.
+#' @param alt (Optional) Boolean that triggers output of apparent altitude of the sun at exact time.
 #' Default is FALSE.
 #' @import swephR
 #' @export
 #' @seealso \code{\link{reduct.theodolite}}
 #' @examples
-#' sunAz(c(52,-3), '2017-10-04 12:32:14', 'Europe/London')
+#' sunAz(c(52,-3,0), '2017-10-04 12:32:14', 'Europe/London')
 sunAz = function(loc, time, timezone = 'Europe/London', limb, alt=F) {
   if (class(loc)=='skyscapeR.horizon') { loc <- c(hor$metadata$georef, hor$metadata$elevation) }
   if (is.null(dim(loc))) { dim(loc) <- c(1, NROW(loc)) }
@@ -315,7 +315,7 @@ sunAz = function(loc, time, timezone = 'Europe/London', limb, alt=F) {
       if (limb=="left") { az[i] <- az[i] - 32/60/2 }
       if (limb=="right") { az[i] <- az[i] + 32/60/2 }
     }
-    if (alt) { at[i] <- aux$xaz[2] }
+    if (alt) { at[i] <- aux$xaz[3] }
   }
   if (alt) {
     df <- data.frame(az = az, alt = at)

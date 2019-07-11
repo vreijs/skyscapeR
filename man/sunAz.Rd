@@ -19,7 +19,7 @@ a string with continent followed by country capital (eg. "Europe/London").}
 \item{limb}{(Optional) Measured limb of the sun. Options are \emph{left}, \emph{right}.
 If missing the centre of the sun will be output.}
 
-\item{alt}{(Optional) Boolean that triggers output of altitude of the sun at exact time.
+\item{alt}{(Optional) Boolean that triggers output of apparent altitude of the sun at exact time.
 Default is FALSE.}
 }
 \description{
@@ -28,7 +28,7 @@ useful for data reduction of theodolite measurements using the sunsight
 technique (\code{\link{reduct.theodolite}}).
 }
 \examples{
-sunAz(c(52,-3), '2017-10-04 12:32:14', 'Europe/London')
+sunAz(c(52,-3,0), '2017-10-04 12:32:14', 'Europe/London')
 }
 \seealso{
 \code{\link{reduct.theodolite}}
