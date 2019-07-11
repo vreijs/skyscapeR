@@ -6,12 +6,12 @@ swephR::swe_set_ephe_path(system.file("ephemeris", "", package = "swephRdata"))
 #' Computes obliquity of the ecliptic
 #'
 #' This function calculates the true obliquity (so incl. nutation) for a given epoch. It is a
-#' wrapper for function \code{\link[swephR]{swe_calc}} of package \emph{swephR}.
+#' wrapper for function \code{\link[swephR]{swe_calc_ut}} of package \emph{swephR}.
 #' @param year Year for which to calculate the obliquity.
 #' Defaults to present year as given by Sys.Date()
 #' @import swephR
 #' @export
-#' @seealso \code{\link[swephR]{swe_calc}}
+#' @seealso \code{\link[swephR]{swe_calc_ut}}
 #' @examples
 #' #' # Obliquity for year 3999 BC:
 #' obliquity(-4000)
@@ -19,7 +19,7 @@ obliquity = function(year = cur.year) {
   aux <- c()
   for (i in 1:length(year)) {
     jd <- swephR::swe_julday(year[i],1,1,12,1)
-    aux[i] <- swephR::swe_calc(jd, -1, 0)$xx[1]
+    aux[i] <- swephR::swe_calc_ut(jd, -1, 0)$xx[1]
   }
   return(aux)
 }
@@ -30,7 +30,7 @@ obliquity = function(year = cur.year) {
 #'
 #' This function calculates the geocentric or topocentric declination and right ascension of solar
 #'  system bodies at a given time. It is a wrapper for function
-#'  \code{\link[swephR]{swe_calc}} of package \emph{swephR}.
+#'  \code{\link[swephR]{swe_calc_ut}} of package \emph{swephR}.
 #' @param body (Optional) String containing name of the solar system body of interest. Can be
 #' any of the planets (inc. Pluto), the Moon, the Sun or the Ecliptic. Defaults to 'sun'.
 #' @param time Either a string containing the date and time in the format "YYYY/MM/DD HH:MM:SS"
@@ -45,7 +45,7 @@ obliquity = function(year = cur.year) {
 #' @param loc (Optional) Location, only needed if output is in topocentric coordinates.
 #' @import swephR
 #' @export
-#' @seealso \code{\link[swephR]{swe_calc}}, \code{\link{timestring}}, \code{\link{time2jd}}
+#' @seealso \code{\link[swephR]{swe_calc_ut}}, \code{\link{timestring}}, \code{\link{time2jd}}
 #' @examples
 #' # Position of the sun at noon GMT on Christmas day 2018:
 #' body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
