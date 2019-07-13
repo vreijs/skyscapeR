@@ -313,8 +313,8 @@ sunAz = function(loc, time, timezone = 'GMT', limb, alt=F) {
     if (az[i] > 360) { az[i] <- az[i]-360 }
 
     if (!missing(limb)) {
-      if (limb=="left") { az[i] <- az[i] - 32/60/2 }
-      if (limb=="right") { az[i] <- az[i] + 32/60/2 }
+      if (limb=="left") { az[i] <- az[i] - 32/60/2/cos(aux$xaz[3]*0.017453292519943) }
+      if (limb=="right") { az[i] <- az[i] + 32/60/2/cos(aux$xaz[3]*0.017453292519943) }
     }
     if (alt) { at[i] <- aux$xaz[3] }
   }
