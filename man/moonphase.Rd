@@ -4,7 +4,7 @@
 \alias{moonphase}
 \title{Computes the phase of the moon}
 \usage{
-moonphase(time, timezone = "", calendar = "G")
+moonphase(time, timezone = "GMT", calendar = "G")
 }
 \arguments{
 \item{time}{Either a string containing the date and time in the format "YYYY-MM-DD HH:MM:SS"
@@ -24,6 +24,7 @@ for function \code{\link[swephR]{swe_pheno_ut}} of package \emph{swephR}.
 \examples{
 # Moonphase at noon GMT on Christmas day 2018:
 moonphase('2018/12/25 12:00:00', 'GMT')
+I would use the same default of timezone as at other places (my preference is GMT)
 }
 \seealso{
 \code{\link[swephR]{swe_pheno_ut}}

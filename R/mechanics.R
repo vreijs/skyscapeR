@@ -47,12 +47,13 @@ obliquity = function(year = cur.year) {
 #' @export
 #' @seealso \code{\link[swephR]{swe_calc_ut}}, \code{\link{timestring}}, \code{\link{time2jd}}
 #' @examples
-#' # Position of the sun at noon GMT on Christmas day 2018:
+#' # Geocentric RA/Dec of the sun at noon GMT on Christmas day 2018:
 #' body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
 #'
 #' # Geocentric declination of the moon at same time
 #' body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
-body.position = function(body='sun', time, timezone='', calendar='G', dectype='geo', loc) {
+#' I would use the same default of timezone as at other places (my preference is GMT)
+body.position = function(body='sun', time, timezone='GNT', calendar='G', dectype='geo', loc) {
   body <- checkbody(body)
 
   out <- data.frame(RA=NA, Dec=NA)
@@ -89,7 +90,8 @@ body.position = function(body='sun', time, timezone='', calendar='G', dectype='g
 #' @examples
 #' # Moonphase at noon GMT on Christmas day 2018:
 #' moonphase('2018/12/25 12:00:00', 'GMT')
-moonphase <- function(time, timezone='', calendar='G') {
+#' I would use the same default of timezone as at other places (my preference is GMT)
+moonphase <- function(time, timezone='GMT', calendar='G') {
   aux <- c()
   for (i in 1:length(time)) {
     if (class(time)=='character') { jd <- time2jd(time[i], timezone, calendar) } else { jd <- time[i] }
@@ -313,8 +315,8 @@ sunAz = function(loc, time, timezone = 'GMT', limb, alt=F) {
     if (az[i] > 360) { az[i] <- az[i]-360 }
 
     if (!missing(limb)) {
-      if (limb=="left") { az[i] <- az[i] - 32/60/2/cos(aux$xaz[3]*0.017453292519943) }
-      if (limb=="right") { az[i] <- az[i] + 32/60/2/cos(aux$xaz[3]*0.017453292519943) }
+      if (limb=="left") { az[i] <- az[i] - 32/60/2/cos(aux$xaz[3]*pi/180) }
+      if (limb=="right") { az[i] <- az[i] + 32/60/2/cos(aux$xaz[3]*pi/180) }
     }
     if (alt) { at[i] <- aux$xaz[3] }
   }

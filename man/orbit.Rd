@@ -22,7 +22,7 @@ than true altitudes. Default is TRUE.}
 \description{
 This function calculates the visible path of a celestial
 object from any location on earth. It outputs a \emph{skyscapeR.orbit}
-object, which includes AZ and ALT information.
+object, which includes azimuth and apparent or topocentric altitude information.
 }
 \examples{
 # Visible path of sun on June Solstice on year 3999 BC from London:

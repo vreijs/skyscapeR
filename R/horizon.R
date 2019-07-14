@@ -186,7 +186,7 @@ downloadHWT <- function(HWTID) {
 # bin.bottom of az needs to be increased with half binsize (0.125) to match the apparent alttiude value
 # (which is determined for the whole bin)
 # I think that interpolations (hor2alt) works well for az=0 and 360, both with apparent altitude being average(hor$data$alt[1],hor$data$alt[2880])
-# was not yet able to test if exportHor can handle this.
+# was not yet able to test if exportHor can handle this (with or without '+0.125/2' the zip is not properly represented in Stellarium).
 
   hor$data <- data.frame(az = horizon$bin.bottom+0.125/2, alt = horizon$altitude, alt.unc = horizon$error)
 
