@@ -224,7 +224,7 @@ riseset <- function(body = 'sun', date, jd, calendar='G', timezone='', loc, refr
 #'
 #' This function calculates the visible path of a celestial
 #' object from any location on earth. It outputs a \emph{skyscapeR.orbit}
-#' object, which includes AZ and ALT information.
+#' object, which includes azimuth and apparent or topocentric altitude information.
 #' @param dec Declination of object.
 #' @param loc Location, either a \emph{skyscapeR.object} or a vector
 #' containing the latitude and longitude of location, in this order.
@@ -254,7 +254,7 @@ orbit = function(dec, loc, res=0.25, refraction=T, ...) {
     aux[i,] <- c(tmp$az,tmp$alt)
   }
 
-  # trim off and sort by aazimuth
+  # trim off and sort by azimuth
   ind <- which (aux[,2] > -20)
   aux <- aux[ind,]
 

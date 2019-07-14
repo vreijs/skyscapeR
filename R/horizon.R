@@ -23,6 +23,8 @@ createHor = function(az, alt, alt.unc, loc, name) {
   # return result
   hor <- c()
   hor$metadata$name <- name
+  # in other places loc is latitude, longitude, height, here is it only latitude and longitude...
+  # a decision needs to be made consistent over skyscapeR
   hor$metadata$georef <- loc; names(hor$metadata$georef) <- c('Lat','Lon'); dim(hor$metadata$georef) <- c(1,2)
 
   hor$data <- data.frame(az = az, alt = alt)
@@ -83,9 +85,8 @@ exportHor = function(hor, name, author="skyscapeR", description, ground_col, hor
   writeLines(string.text, fileConn)
   close(fileConn)
 
-  # Save as zip file
+  # Save as zip file: for windows RTools (incl. path settings) is needed
 
-  # no zip file is made in my case... or perhasp provide in function results the location ofthe zip file
   zip(zipfile=paste0(name,'-horizon.zip'), files=c("landscape.ini", "horizon.txt"))
   file.remove(c('landscape.ini', 'horizon.txt'))
 }
