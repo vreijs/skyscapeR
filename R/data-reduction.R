@@ -118,6 +118,7 @@ reduct.theodolite = function(loc, az, date, time, tz, az.sun = 0, limb, alt, nam
 #' # Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 #' hor <- downloadHWT('NML6GMSX')
 #' data <- reduct.compass(hor, mag.az, "2016/04/02")
+#' #should loc be a vector of three? At this moment It does not work when using 3 valued vector.
 reduct.compass = function(loc, mag.az, date, magdec, alt, name, ID, HWT.ID) {
   if (class(loc)=='skyscapeR.horizon') { hor <- loc; loc <- loc$metadata$georef } else { hor <- NULL }
 

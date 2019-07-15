@@ -227,12 +227,12 @@ riseset <- function(body = 'sun', date, jd, calendar='G', timezone='', loc, refr
 #' This function calculates the visible path of a celestial
 #' object from any location on earth. It outputs a \emph{skyscapeR.orbit}
 #' object, which includes azimuth and apparent or topocentric altitude information.
-#' @param dec Declination of object.
+#' @param dec Topocentric declination of object.
 #' @param loc Location, either a \emph{skyscapeR.object} or a vector
 #' containing the latitude and longitude of location, in this order.
 #' @param res The resolution (in degrees of RA) with which to calculate the path.
 #' @param refraction (Optional) If set to TRUE it will calculate apparent rather
-#' than true altitudes. Default is TRUE.
+#' than topocentric altitudes. Default is TRUE.
 #' @param ...  Any other parameters to be passed unto \code{\link[swephR]{swe_azalt}}.
 #' @import swephR
 #' @export

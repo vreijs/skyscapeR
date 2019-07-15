@@ -7,7 +7,7 @@
 orbit(dec, loc, res = 0.25, refraction = T, ...)
 }
 \arguments{
-\item{dec}{Declination of object.}
+\item{dec}{Topocentric declination of object.}
 
 \item{loc}{Location, either a \emph{skyscapeR.object} or a vector
 containing the latitude and longitude of location, in this order.}
@@ -15,7 +15,7 @@ containing the latitude and longitude of location, in this order.}
 \item{res}{The resolution (in degrees of RA) with which to calculate the path.}
 
 \item{refraction}{(Optional) If set to TRUE it will calculate apparent rather
-than true altitudes. Default is TRUE.}
+than topocentric altitudes. Default is TRUE.}
 
 \item{...}{Any other parameters to be passed unto \code{\link[swephR]{swe_azalt}}.}
 }

@@ -43,6 +43,7 @@ data <- reduct.compass(loc, mag.az, "2016/04/02", alt=c(1,2,0))
 # Alternatively, the apparent altitude can be automatically retrieved from a horizon profile:
 hor <- downloadHWT('NML6GMSX')
 data <- reduct.compass(hor, mag.az, "2016/04/02")
+#should loc be a vector of three? At this moment It does not work when using 3 valued vector.
 }
 \seealso{
 \code{\link{mag.dec}}, \code{\link{az2dec}}, \code{\link{hor2alt}}

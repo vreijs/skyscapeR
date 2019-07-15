@@ -205,8 +205,8 @@ az2dec = function(az, loc, alt){
   dec <- c()
   for (i in 1:NROW(az)) {
     # change apparent altitude into topocentric altitude
-    topoalt<-swe_refrac_extended(alt[i],0,1013.25,15,0.0065,1)$dret[1]
-    # this looks to be a defautl jd???? SHould this not be a relevant jd?
+    topoalt<-swe_refrac_extended(alt[i],100,1013.25,15,0.0065,1)$dret[1]
+    # jd_ut is not important for equatorial coordinates.
     dec[i] <- round(swe_azalt_rev(jd, 1, c(georef[2],georef[1],0), c(az[i]-180, topoalt))$xout[2], prec)
   }
 
