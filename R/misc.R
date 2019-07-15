@@ -222,7 +222,7 @@ az2dec = function(az, loc, alt){
 #' for function \code{\link[oce]{magneticField}} of package \emph{oce}.
 #' @param loc Location, can be either a \emph{skyscapeR.horizon} object or, alternatively,
 #' a latitude.
-#' @param date Date for which to calculate magnetic declination in the format: 'YYYY/MM/DD'
+#' @param date Date for which to calculate magnetic declination in the format: 'YYYY/MM/DD'. Dates should be in the range 1900 to 2025.
 #' @export
 #' @seealso \code{\link[oce]{magneticField}}
 #' @examples
@@ -231,6 +231,7 @@ az2dec = function(az, loc, alt){
 #' london.lon <- -0.1278 #W
 #' loc <- c( london.lat, london.lon )
 #' mag.dec( loc, "2016/04/01" )
+#can loc be a vector of three?
 mag.dec = function(loc, date) {
   if (class(loc) == 'skyscapeR.horizon') { loc <- loc$metadata$georef }
   if (is.null(dim(loc))) { dim(loc) <- c(1,NROW(loc)) }

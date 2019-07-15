@@ -11,7 +11,7 @@ mag.dec(loc, date)
 \item{loc}{Location, can be either a \emph{skyscapeR.horizon} object or, alternatively,
 a latitude.}
 
-\item{date}{Date for which to calculate magnetic declination in the format: 'YYYY/MM/DD'}
+\item{date}{Date for which to calculate magnetic declination in the format: 'YYYY/MM/DD'. Dates should be in the range 1900 to 2025.}
 }
 \description{
 This function estimates the magnetic declination at a given location
