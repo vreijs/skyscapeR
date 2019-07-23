@@ -2,7 +2,7 @@
 % Please edit documentation in R/mechanics.R
 \name{riseset}
 \alias{riseset}
-\title{Computes the rising and setting azimuth, declination and time of a Solar System object
+\title{Computes the rising and setting azimuth, declination and time of the centre of a Solar System object
 for a given location and day}
 \usage{
 riseset(body = "sun", date, jd, calendar = "G", timezone = "", loc,
@@ -39,21 +39,21 @@ Defaults to \emph{TRUE}.}
 \item{verbose}{(Optional) Boolean to control whether or not to display text. Default is TRUE.}
 }
 \description{
-Computes the rising and setting azimuth, declination and time of a Solar System object
+Computes the rising and setting azimuth, declination and time of the centre of a Solar System object
 for a given location and day
 }
 \examples{
-# Rising and setting of the sun on june solstice 2018, from the location of London
+# Rising and setting of the sun's centre on june solstice 2018, from the location of London
 riseset('sun', '2018/06/21', loc=c(51.5, 0.11, 100))
 
-# Rising ans setting of the moon on june solstice 2018, using a horizon profile
+# Rising ans setting of the moon's centre on june solstice 2018, using a horizon profile
 hor <- downloadHWT('HIFVTBGK') # Liverpool cathedral
 riseset('moon', '2018/06/21', loc=hor)
 
-# Rising and setting of the sun throughout February 1999, from the location of London
+# Rising and setting of the sun's centre throughout February 1999, from the location of London
 riseset('sun', '1999/02', loc=c(51.5, 0.11, 100))
 
-# Rising and setting of the sun throughout 3000 BC, from the location of London
+# Rising and setting of the sun's centre throughout 3000 BC, from the location of London
 riseset('sun', -3000, loc=c(51.5, 0.11, 100))
 }
 \seealso{

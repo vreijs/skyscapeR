@@ -2,7 +2,7 @@
 % Please edit documentation in R/misc.R
 \name{mag.dec}
 \alias{mag.dec}
-\title{Estimates magnetics declination (diff. between true and magnetic
+\title{Estimates magnetic declination (diff. between true and magnetic
 north) based on IGRF 12th gen model}
 \usage{
 mag.dec(loc, date)

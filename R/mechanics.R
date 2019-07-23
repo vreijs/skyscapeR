@@ -116,7 +116,7 @@ vecAzAlt <- function(jd, body, loc, refraction=T, atm=1013.25, temp=15) {
 
 
 
-#' Computes the rising and setting azimuth, declination and time of a Solar System object
+#' Computes the rising and setting azimuth, declination and time of the centre of a Solar System object
 #' for a given location and day
 #'
 #' @param body (Optional) String containing name of the solar system body of interest. Can be
@@ -142,17 +142,17 @@ vecAzAlt <- function(jd, body, loc, refraction=T, atm=1013.25, temp=15) {
 #' @export
 #' @seealso \code{\link[swephR]{swe_calc_ut}}, \code{\link[swephR]{swe_azalt}}
 #' @examples
-#' # Rising and setting of the sun on june solstice 2018, from the location of London
+#' # Rising and setting of the sun's centre on june solstice 2018, from the location of London
 #' riseset('sun', '2018/06/21', loc=c(51.5, 0.11, 100))
 #'
-#' # Rising ans setting of the moon on june solstice 2018, using a horizon profile
+#' # Rising ans setting of the moon's centre on june solstice 2018, using a horizon profile
 #' hor <- downloadHWT('HIFVTBGK') # Liverpool cathedral
 #' riseset('moon', '2018/06/21', loc=hor)
 #'
-#' # Rising and setting of the sun throughout February 1999, from the location of London
+#' # Rising and setting of the sun's centre throughout February 1999, from the location of London
 #' riseset('sun', '1999/02', loc=c(51.5, 0.11, 100))
 #'
-#' # Rising and setting of the sun throughout 3000 BC, from the location of London
+#' # Rising and setting of the sun's centre throughout 3000 BC, from the location of London
 #' riseset('sun', -3000, loc=c(51.5, 0.11, 100))
 riseset <- function(body = 'sun', date, jd, calendar='G', timezone='', loc, refraction=T, atm=1013.25, temp=15, verbose=T, alt=0) {
   out <- c()
@@ -194,11 +194,13 @@ riseset <- function(body = 'sun', date, jd, calendar='G', timezone='', loc, refr
   if (length(jd0) > 1 & verbose) { pb <- txtProgressBar(max = length(jd0), style=3) }
 
   for (k in 1:length(jd0)) {
+    # centre of object '1+256' is used. MIgth be better to use the top of the celestial object '1'
     rise <- swe_rise_trans_true_hor(jd0[k], body, '', 0, 1+256, c(loc[2],loc[1],loc[3]), atm, temp, alt)$tret
     aux <- vecAzAlt(rise, body, loc, refraction, atm, temp)
     aux[1,2] <- aux[1,2] - 180; if (aux[1,2]>360) { aux[1,2] <- aux[1,2]-360 }
     aux1 <- data.frame(azimuth = aux[1,2], declination = aux[2,1], time = jd2time(rise, timezone, calendar), stringsAsFactors = F)
 
+       # centre of object '2+256' is used. MIgth be better to use the top of the celestial object '2'
     set <- swe_rise_trans_true_hor(jd0[k], body, '', 0, 2+256, c(loc[2],loc[1],loc[3]), atm, temp, alt)$tret
     aux <- vecAzAlt(set, body, loc, refraction, atm, temp)
     aux[1,2] <- aux[1,2] - 180; if (aux[1,2]>360) { aux[1,2] <- aux[1,2]-360 }
