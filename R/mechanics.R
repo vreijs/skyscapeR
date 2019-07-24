@@ -26,7 +26,7 @@ obliquity = function(year = cur.year) {
 
 
 
-#' Computes position of Solar System bodies in equatorial coordinates
+#' Computes position of the centre of Solar System bodies in equatorial coordinates
 #'
 #' This function calculates the geocentric or topocentric declination and right ascension of solar
 #'  system bodies at a given time. It is a wrapper for function
@@ -47,10 +47,10 @@ obliquity = function(year = cur.year) {
 #' @export
 #' @seealso \code{\link[swephR]{swe_calc_ut}}, \code{\link{timestring}}, \code{\link{time2jd}}
 #' @examples
-#' # Geocentric RA/Dec of the sun at noon GMT on Christmas day 2018:
+#' # Geocentric RA/Dec of the centre of sun at noon GMT on Christmas day 2018:
 #' body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
 #'
-#' # Geocentric declination of the moon at same time
+#' # Geocentric declination of the centre of moon at same time
 #' body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
 #' I would use the same default of timezone as at other places (my preference is GMT)
 body.position = function(body='sun', time, timezone='GNT', calendar='G', dectype='geo', loc) {

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mechanics.R
 \name{body.position}
 \alias{body.position}
-\title{Computes position of Solar System bodies in equatorial coordinates}
+\title{Computes position of the centre of Solar System bodies in equatorial coordinates}
 \usage{
 body.position(body = "sun", time, timezone = "GNT", calendar = "G",
   dectype = "geo", loc)
@@ -32,10 +32,10 @@ This function calculates the geocentric or topocentric declination and right asc
  \code{\link[swephR]{swe_calc_ut}} of package \emph{swephR}.
 }
 \examples{
-# Geocentric RA/Dec of the sun at noon GMT on Christmas day 2018:
+# Geocentric RA/Dec of the centre of sun at noon GMT on Christmas day 2018:
 body.position('sun', '2018/12/25 12:00:00', timezone='GMT')
 
-# Geocentric declination of the moon at same time
+# Geocentric declination of the centre of moon at same time
 body.position('moon', '2018/12/25 12:00:00', timezone='GMT')$Dec
 I would use the same default of timezone as at other places (my preference is GMT)
 }
