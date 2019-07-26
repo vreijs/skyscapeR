@@ -194,6 +194,7 @@ jS = function(year = cur.year, parallax = 0.00224) {
 #' # Northern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nmnLX(-2500)
 nmnLX = function(year = cur.year, parallax = 0.952) {
+  # formula coming from ARCHAECOSMO
   return(obliquity(year) - (5.145+0.145) - parallax)
 }
 
@@ -212,6 +213,7 @@ nmnLX = function(year = cur.year, parallax = 0.952) {
 #' # Southern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' smnLX(-2500)
 smnLX = function(year = cur.year, parallax = .952) {
+  # formula coming from ARCHAECOSMO
   return(-(obliquity(year) - (5.145+0.145)) - parallax)
 }
 
@@ -223,13 +225,14 @@ smnLX = function(year = cur.year, parallax = .952) {
 #' of obliquity with maximum lunar inclination.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
-#' @param parallax Lunar parallax value. Defaults to 0.952 the averaga parallax value. If set to 0: geocentric declination.
+#' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{smnLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Northern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nMjLX(-2500)
 nMjLX = function(year = cur.year, parallax = 0.952) {
+  # formula coming from ARCHAECOSMO
   return(obliquity(year) + (5.145+0.145) - parallax)
 }
 
@@ -248,6 +251,7 @@ nMjLX = function(year = cur.year, parallax = 0.952) {
 #' # Southern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' sMjLX(-2500)
 sMjLX = function(year = cur.year, parallax = 0.952) {
+  # formula coming from ARCHAECOSMO
   return(-(obliquity(year) + (5.145+0.145)) - parallax)
 }
 
