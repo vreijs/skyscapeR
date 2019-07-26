@@ -15,7 +15,7 @@ Defaults to present year as given by \emph{Sys.Date()}.}
 \description{
 This function calculates the Topodecentric declination of the southern
 major Lunar Extreme for a given year, by simple addition
-of obliquity with maximum lunar inclination.
+of negative obliquity with maximum lunar inclination and perturbation.
 }
 \examples{
 # Southern major Lunar Extreme Topodecentric declination for year 2499 BC:

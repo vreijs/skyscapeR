@@ -183,8 +183,8 @@ jS = function(year = cur.year, parallax = 0.00224) {
 #' Topodecentric declination of northern minor Lunar Extreme for a given year
 #'
 #' This function calculates the Topodecentric declination of the northern
-#' minor Lunar Extreme for a given year, by simple addition
-#' of obliquity with maximum lunar inclination.
+#' minor Lunar Extreme for a given year, by simple subtraction
+#' of obliquity with maximum lunar inclination and perturbation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
@@ -202,8 +202,8 @@ nmnLX = function(year = cur.year, parallax = 0.952) {
 #' Topodecentric declination of southern minor Lunar Extreme for a given year
 #'
 #' This function calculates the Topodecentric declination of the southern
-#' minor Lunar Extreme for a given year, by simple addition
-#' of obliquity with maximum lunar inclination.
+#' minor Lunar Extreme for a given year, by simple subtraction
+#' of negative obliquity with maximum lunar inclination and perturbation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
@@ -222,7 +222,7 @@ smnLX = function(year = cur.year, parallax = .952) {
 #'
 #' This function calculates the Topodecentric declination of the northern
 #' major Lunar Extreme for a given year, by simple addition
-#' of obliquity with maximum lunar inclination.
+#' of obliquity with maximum lunar inclination and perturbation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
@@ -241,7 +241,7 @@ nMjLX = function(year = cur.year, parallax = 0.952) {
 #'
 #' This function calculates the Topodecentric declination of the southern
 #' major Lunar Extreme for a given year, by simple addition
-#' of obliquity with maximum lunar inclination.
+#' of negative obliquity with maximum lunar inclination and perturbation.
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
