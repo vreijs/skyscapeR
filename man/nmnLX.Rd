@@ -4,13 +4,15 @@
 \alias{nmnLX}
 \title{Topodecentric declination of northern minor Lunar Extreme for a given year}
 \usage{
-nmnLX(year = cur.year, parallax = 0.952)
+nmnLX(year = cur.year, parallax = 0.952, alt = 0)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
 Defaults to present year as given by \emph{Sys.Date()}.}
 
 \item{parallax}{Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.}
+
+\item{alt}{altitude value. Defaults to 0}
 }
 \description{
 This function calculates the Topodecentric declination of the northern

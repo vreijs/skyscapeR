@@ -11,6 +11,8 @@ nMjLX(year = cur.year, parallax = 0.952)
 Defaults to present year as given by \emph{Sys.Date()}.}
 
 \item{parallax}{Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.}
+
+\item{alt}{altitude value. Defaults to 0}
 }
 \description{
 This function calculates the Topodecentric declination of the northern

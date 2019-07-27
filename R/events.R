@@ -188,14 +188,15 @@ jS = function(year = cur.year, parallax = 0.00224) {
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
+#' @param geoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
 #' @export
 #' @seealso \code{\link{smnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Northern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nmnLX(-2500)
-nmnLX = function(year = cur.year, parallax = 0.952) {
+nmnLX = function(year = cur.year, parallax = 0.952, alt=0) {
   # formula coming from ARCHAECOSMO
-  return(obliquity(year) - (5.145+0.145) - parallax)
+  return(obliquity(year) - (5.145+0.145) - parallax*cos(geoalt/180*pi))
 }
 
 
@@ -207,6 +208,7 @@ nmnLX = function(year = cur.year, parallax = 0.952) {
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
+#' @param geoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
@@ -214,7 +216,7 @@ nmnLX = function(year = cur.year, parallax = 0.952) {
 #' smnLX(-2500)
 smnLX = function(year = cur.year, parallax = .952) {
   # formula coming from ARCHAECOSMO
-  return(-(obliquity(year) - (5.145+0.145)) - parallax)
+  return(-(obliquity(year) - (5.145+0.145)) - parallax*cos(gepalt/180*pi))
 }
 
 
@@ -226,6 +228,7 @@ smnLX = function(year = cur.year, parallax = .952) {
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
+#' @param gepalt altitude value. Defaults to 0 (not that much difference if appalt is used)
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{smnLX}}, \code{\link{sMjLX}}
 #' @examples
@@ -233,7 +236,7 @@ smnLX = function(year = cur.year, parallax = .952) {
 #' nMjLX(-2500)
 nMjLX = function(year = cur.year, parallax = 0.952) {
   # formula coming from ARCHAECOSMO
-  return(obliquity(year) + (5.145+0.145) - parallax)
+  return(obliquity(year) + (5.145+0.145) - parallax*cos(alt/180*pi))
 }
 
 
@@ -245,6 +248,7 @@ nMjLX = function(year = cur.year, parallax = 0.952) {
 #' @param year Year for which to calculate the declination.
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
+#' @param geoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
 #' @export
 #' @seealso \code{\link{nmnLX}}, \code{\link{nMjLX}}, \code{\link{smnLX}}
 #' @examples
@@ -252,7 +256,7 @@ nMjLX = function(year = cur.year, parallax = 0.952) {
 #' sMjLX(-2500)
 sMjLX = function(year = cur.year, parallax = 0.952) {
   # formula coming from ARCHAECOSMO
-  return(-(obliquity(year) + (5.145+0.145)) - parallax)
+  return(-(obliquity(year) + (5.145+0.145)) - parallax*cos(geoalt/180*pi))
 }
 
 #' Topodecentric declination of sun at the equinoxes
