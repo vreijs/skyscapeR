@@ -4,7 +4,7 @@
 \alias{sMjLX}
 \title{Topodecentric declination of southern major Lunar Extreme for a given year}
 \usage{
-sMjLX(year = cur.year, parallax = 0.952)
+sMjLX(year = cur.year, parallax = 0.952, topoalt = 0)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
@@ -12,7 +12,7 @@ Defaults to present year as given by \emph{Sys.Date()}.}
 
 \item{parallax}{Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.}
 
-\item{alt}{altitude value. Defaults to 0}
+\item{topoalt}{altitude value. Defaults to 0 (not that much difference if appalt is used)}
 }
 \description{
 This function calculates the Topodecentric declination of the southern
