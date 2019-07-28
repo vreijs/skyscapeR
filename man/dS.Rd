@@ -4,7 +4,7 @@
 \alias{dS}
 \title{Topodecentric declination of December Solstice for a given year}
 \usage{
-dS(year = cur.year, parallax = 0.00224, topoalt = 0)
+dS(year = cur.year, parallax = 0.00224, topoalt = 0, geolat = 50)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
@@ -13,6 +13,8 @@ Defaults to present year as given by \emph{Sys.Date()}.}
 \item{parallax}{Solar parallax value. Defaults to 0.00224 the average parallax value. If set to 0: geocentric declination.}
 
 \item{topoalt}{altitude value. Defaults to 0 (not that much difference if appalt is used)}
+
+\item{geolat}{Geographic lattiude value. Defaults to 50}
 }
 \description{
 This function calculates the Topodecentric declination of the sun

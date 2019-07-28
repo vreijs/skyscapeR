@@ -151,13 +151,14 @@ sky.objects = function(names, epoch, col = 'red', lty = 1, lwd = 1) {
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Solar parallax value. Defaults to 0.00224 the average parallax value. If set to 0: geocentric declination.
 #' @param topoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
+#' @param geolat Geographic lattiude value. Defaults to 50
 #' @export
 #' @seealso \code{\link{obliquity}}, \code{\link{jS}}, \code{\link{eq}}, \code{\link{zenith}}, \code{\link{antizenith}}
 #' @examples
 #' # December Solstice declination for year 3999 BC:
 #' dS(-4000)
-dS = function(year = cur.year, parallax = 0.00224, topoalt=0) {
-  aux <- -obliquity(year)-parallax*cos(topoalt/180*pi)
+dS = function(year = cur.year, parallax = 0.00224, topoalt=0, geolat=50) {
+  aux <- -obliquity(year)-parallax*cos(topoalt/180*pi)*sin(geolat/180*pi)
   return(aux)
 }
 
@@ -171,13 +172,14 @@ dS = function(year = cur.year, parallax = 0.00224, topoalt=0) {
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Solar parallax value. Defaults to 0.00224 the average parallax value. If set to 0: geocentric declination.
 #' @param topoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
+#' @param geolat Geographic lattiude value. Defaults to 50
 #' @export
 #' @seealso \code{\link{obliquity}}, \code{\link{dS}}, \code{\link{eq}}, \code{\link{zenith}}, \code{\link{antizenith}}
 #' @examples
 #' # June Solstice declination for year 3999 BC:
 #' jS(-4000)
-jS = function(year = cur.year, parallax = 0.00224, topoalt=0) {
-  aux <- obliquity(year)-parallax*cos(topoalt/180*pi)
+jS = function(year = cur.year, parallax = 0.00224, topoalt=0, geolat=50) {
+  aux <- obliquity(year)-parallax*cos(topoalt/180*pi)*sin(geolat/180*pi)
   return(aux)
 }
 
@@ -191,14 +193,15 @@ jS = function(year = cur.year, parallax = 0.00224, topoalt=0) {
 #' Defaults to present year as given by \emph{Sys.Date()}.
 #' @param parallax Lunar parallax value. Defaults to 0.952 the average parallax value. If set to 0: geocentric declination.
 #' @param topoalt altitude value. Defaults to 0 (not that much difference if appalt is used)
+#' @param geolat Geographic lattiude value. Defaults to 50
 #' @export
 #' @seealso \code{\link{smnLX}}, \code{\link{nMjLX}}, \code{\link{sMjLX}}
 #' @examples
 #' # Northern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nmnLX(-2500)
-nmnLX = function(year = cur.year, parallax = 0.952, topoalt=0) {
+nmnLX = function(year = cur.year, parallax = 0.952, topoalt=0, geolat=50) {
   # formula coming from ARCHAECOSMO
-  return(obliquity(year) - (5.145+0.145) - parallax*cos(topoalt/180*pi))
+  return(obliquity(year) - (5.145+0.145) - parallax*cos(topoalt/180*pi)*sin(geolat/180*pi))
 }
 
 
@@ -216,9 +219,9 @@ nmnLX = function(year = cur.year, parallax = 0.952, topoalt=0) {
 #' @examples
 #' # Southern minor Lunar Extreme Topodecentric declination for year 2499 BC:
 #' smnLX(-2500)
-smnLX = function(year = cur.year, parallax = .952,topoalt=0) {
+smnLX = function(year = cur.year, parallax = .952,topoalt=0, geolat=50) {
   # formula coming from ARCHAECOSMO
-  return(-(obliquity(year) - (5.145+0.145)) - parallax*cos(topoalt/180*pi))
+  return(-(obliquity(year) - (5.145+0.145)) - parallax*cos(topoalt/180*pi)*sin(geolat/180*pi))
 }
 
 
@@ -236,9 +239,9 @@ smnLX = function(year = cur.year, parallax = .952,topoalt=0) {
 #' @examples
 #' # Northern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' nMjLX(-2500)
-nMjLX = function(year = cur.year, parallax = 0.952,topoalt=0) {
+nMjLX = function(year = cur.year, parallax = 0.952,topoalt=0, geolat=50) {
   # formula coming from ARCHAECOSMO
-  return(obliquity(year) + (5.145+0.145) - parallax*cos(topoalt/180*pi))
+  return(obliquity(year) + (5.145+0.145) - parallax*cos(topoalt/180*pi)*sin(geolat/180*pi))
 }
 
 
@@ -256,9 +259,9 @@ nMjLX = function(year = cur.year, parallax = 0.952,topoalt=0) {
 #' @examples
 #' # Southern major Lunar Extreme Topodecentric declination for year 2499 BC:
 #' sMjLX(-2500)
-sMjLX = function(year = cur.year, parallax = 0.952,topoalt=0) {
+sMjLX = function(year = cur.year, parallax = 0.952,topoalt=0, geolat=50) {
   # formula coming from ARCHAECOSMO
-  return(-(obliquity(year) + (5.145+0.145)) - parallax*cos(topoalt/180*pi))
+  return(-(obliquity(year) + (5.145+0.145)) - parallax*cos(topoalt/180*pi)*sin(geolat/180*pi))
 }
 
 #' Topodecentric declination of sun at the equinoxes

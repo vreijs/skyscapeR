@@ -4,7 +4,7 @@
 \alias{sMjLX}
 \title{Topodecentric declination of southern major Lunar Extreme for a given year}
 \usage{
-sMjLX(year = cur.year, parallax = 0.952, topoalt = 0)
+sMjLX(year = cur.year, parallax = 0.952, topoalt = 0, geolat = 50)
 }
 \arguments{
 \item{year}{Year for which to calculate the declination.
